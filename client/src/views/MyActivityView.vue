@@ -78,7 +78,7 @@ let isActive = ref(false);
             </div>
           </div>
           <div v-for="post in postData" :key="post.id">
-            <div v-if="post.username == session.user.username">
+            <div v-if="post.username == session.user?.username">
               <article class="media">
                 <figure class="media-left">
                   <p class="image is-64x64">
