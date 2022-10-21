@@ -50,7 +50,7 @@ postSubmit.onsubmit = e => {
     discriptionInput.value,
   );
 
-  createPostElement(newPost);
+ // createPostElement(newPost);
 
   titleInput.value = "";
   discriptionInput.value = "";
