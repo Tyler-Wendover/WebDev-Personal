@@ -17,14 +17,12 @@ var users = [
 ]
 
 export function getInfo() {
-	var username = document.getElementById('username').value
-	var password = document.getElementById('password').value
+	var username = (<HTMLInputElement>document.getElementById('username')).value
+	var password = (<HTMLInputElement>document.getElementById('password')).value
 
 	for(var i = 0; i < users.length; i++) {
-		// check is user input matches username and password of a current index of the objPeople array
 		if(username == users[i].username && password == users[i].password) {
 			console.log(username + " is logged in!!!")
-			// stop the function if this is found to be true
 			return
 		}
 	}
@@ -32,7 +30,3 @@ export function getInfo() {
 }
 
 export default users;
-
-
-////////// Move this to session.ts //////////
-////////// after checking is user is valid apply it to session ////////// 

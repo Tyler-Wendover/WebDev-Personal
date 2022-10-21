@@ -12,8 +12,8 @@ const postDiscription = document.createElement("p");
 const postContainer = document.querySelector('.post-container');
 
 export function makePost() {
-    var title = document.getElementById('title').value as string
-    var content = document.getElementById('content').value as string 
+    var title = (<HTMLInputElement>document.getElementById('title')).value as string
+    var content = (<HTMLInputElement>document.getElementById('content')).value as string 
     var username = session.user.username as string
     posts.content = {
         postTitle: title,

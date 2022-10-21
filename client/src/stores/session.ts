@@ -7,8 +7,8 @@ const session = reactive( {
 });
 
 export function getInfo() {
-	var username = document.getElementById('username').value as string
-	var password = document.getElementById('password').value as string
+	var username = (<HTMLInputElement>document.getElementById('username')).value as string
+	var password = (<HTMLInputElement>document.getElementById('password')).value as string
 
 	for(var i = 0; i < userData.length; i++) {
 		// check is user input matches username and password of a current index of the objPeople array
