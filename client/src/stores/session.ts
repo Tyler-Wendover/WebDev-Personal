@@ -69,5 +69,4 @@ export class User {
     isAdministrator?: boolean;
 }
 
-
 export default session;
