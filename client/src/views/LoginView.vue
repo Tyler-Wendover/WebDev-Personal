@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import session, { getInfo } from "../stores/session";
+  import { login } from '@/stores/session';
+  import { ref } from "vue";
+  import session, { getInfo } from "../stores/session";
 </script>
 
 <template>

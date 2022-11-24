@@ -55,10 +55,18 @@ export function goLogin() {
     router.push({ path: '/login'});
 }
 
+export function login(username: string, email: string, password: string) {
+    session.user = {
+      username,
+      email,
+    };
+  }
+
 export class User {
-    public username?: string;
-    public password?: string;
-    public isAdministrator?: boolean;
+    username?: string;
+    email?: string;
+    password?: string;
+    isAdministrator?: boolean;
 }
 
 
