@@ -1,72 +1,110 @@
-import { reactive } from "vue";
-import userData from "../assets/users.json"
-import router from "../router/index"
+import myFetch from "@/services/myFetch";
+import { computed, reactive } from "vue";
+import { getUser, getUsers } from "./users";
+import router from "../router/index";
 
-const session = reactive( {
-    user: null as User | null,
+const session = reactive({
+  user: null as User | null,
+  error: null as string | null,
+  messages: [] as Message[],
 });
 
-export function getInfo() {
-	var username = (<HTMLInputElement>document.getElementById('username')).value as string
-	var password = (<HTMLInputElement>document.getElementById('password')).value as string
+export default session;
 
-	for(var i = 0; i < userData.length; i++) {
-		// check is user input matches username and password of a current index of the objPeople array
-		if(username == userData[i].username && password == userData[i].password) {
-			var isAdministrator = userData[i].isAdmin as boolean
-            console.log(username + " is logged in!!!")
-            session.user = {
-                username,
-                password,
-                isAdministrator,
-            }
-            console.log(session.user)
-            router.push({ path: '/'});
-			// stop the function if this is found to be true
-			return
-		}
-	}
+export function setError(error: string | null) {
+  session.error = error;
+  if (error) {
+    session.messages.push({ type: "danger", text: error });
+  }
 }
 
-export function isSignedIn() {
-    if (session.user === null) {
-        router.push({ path: '/login'});
-    }
-    else {
-        return true;
-    }
+
+export async function api<T>(url: string, data: any = null, method?: string) {
+  setError(null);
+  try {
+    return await myFetch<T>(url, data, method);
+  } catch (error) {
+    setError(error as string);
+  } 
+  return {} as T;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function login(
+  username: string,
+  password: string,
+  name: string,
+  email: string,
+  isAdmin: boolean
+) {
+  session.user = {
+    username,
+    password,
+    name,
+    email,
+    isAdmin,
+  };
+
+  console.log(session.user);
 }
 
 export function logout() {
-    session.user = null;
-    console.log("logged out");
-    
+  session.user = null;
+  console.log("logged out");
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function isAdmin() {
+  if (session.user === null) {
+    return false;
+  } else if (session.user.isAdmin === true) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export function isSignedIn() {
+  if (session.user === null) {
+    router.push({ path: "/login" });
+  } else {
+    return true;
+  }
+}
+
 export function who() {
-    console.log(session.user);
-    return session.user;
+  console.log(session.user);
+  return session.user;
 }
 
 export function goHome() {
-    router.push({ path: '/'});
+  router.push({ path: "/" });
 }
 
 export function goLogin() {
-    router.push({ path: '/login'});
+  router.push({ path: "/login" });
 }
 
-export function login(username: string, email: string, password: string) {
-    session.user = {
-      username,
-      email,
-    };
-  }
-
-export class User {
-    username?: string;
-    email?: string;
-    password?: string;
-    isAdministrator?: boolean;
+export function goRegister() {
+  router.push({ path: "/register" });
+  console.log("go to register");
 }
 
-export default session;
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export interface User {
+  username: string;
+  name: string;
+  email?: string;
+  password?: string;
+  isAdmin?: boolean;
+}
+
+export interface Message {
+  text: string;
+  type: "success" | "danger";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,60 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "ADMIN",
+      "username": "admin",
+      "content": "Did a run around campus",
+      "date": "2019-10-01"
+    },
+    {
+      "id": 2,
+      "name": "Tyler Wendover",
+      "username": "tyler",
+      "content": "Hiked up Mohonk",
+      "date": "2019-10-01"
+    },
+    {
+      "id": 3,
+      "name": "John Doe",
+      "username": "john",
+      "content": "Went to the gym",
+      "date": "2019-10-01"
+    },
+    {
+      "id": 4,
+      "name": "ADMIN",
+      "username": "admin",
+      "content": "Went Swimming at the pool",
+      "date": "2019-10-01"
+    },
+    {
+      "id": 5,
+      "name": "ADMIN",
+      "username": "admin",
+      "content": "took dog for a walk",
+      "date": "2019-10-01"
+    },
+    {
+      "id": 6,
+      "name": "Tyler Wendover",
+      "username": "tyler",
+      "content": "Went on a bike ride over the hudson",
+      "date": "2019-10-01"
+    },
+    {
+      "id": 7,
+      "name": "John Doe",
+      "username": "john",
+      "content": "ran a marathon",
+      "date": "2019-10-01"
+    },
+    {
+      "id": 8,
+      "name": "Tyler Wendover",
+      "username": "tyler",
+      "content": "went to the climbing gym",
+      "date": "2019-10-01"
+    }
+  ]
+}

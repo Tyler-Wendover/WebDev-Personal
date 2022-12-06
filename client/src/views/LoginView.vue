@@ -1,7 +1,32 @@
 <script setup lang="ts">
-  import { login } from '@/stores/session';
-  import { ref } from "vue";
-  import session, { getInfo } from "../stores/session";
+import session, { login } from "../stores/session";
+import { getUser, getUsers, type User } from "../stores/users";
+import { reactive, ref } from "vue";
+
+const email = ref("");
+const name = ref("");
+const password = ref("");
+const username = ref("");
+const isAdmin = ref(false);
+
+const users = reactive([] as User[]);
+getUsers().then(x=>users.push(...x.users));
+
+async function signIn( username: string, password: string ) {
+  console.log("signing in");
+  for( let user of users ) {
+    if( user.username === username && user.password === password ) {
+      session.user = user;
+      console.log("user found");
+      console.log(session.user);
+      return;
+    } else {
+      console.log("user not found");
+    }
+  }
+}
+
+
 </script>
 
 <template>
@@ -9,36 +34,38 @@
     <div class="notification is-primary">
       <!--Temporary for the Midterm-->
       <button class="delete"></button>
-        <h1>Sign In using:</h1>
-        <h2>Username: admin , Password: admin</h2>
-        <h2>Username: tyler , Password: password</h2>
-        <h2>Username: john ,  Password: password</h2>
+      <h1>Sign In using:</h1>
+      <h2>Username: admin , Password: admin</h2>
+      <h2>Username: tyler , Password: password</h2>
+      <h2>Username: john , Password: password</h2>
     </div>
-    <div>
-      <label class="label is-medium" for="text">Username</label>
-      <input
-        class="input is-medium is-dark"
-        type="text"
-        id="username"
-        name="username"
-        required
-      />
-    </div>
-    <div>
-      <label class="label is-medium" for="password">Password</label>
-      <input
-        class="input is-medium is-dark"
-        type="password"
-        id="password"
-        name="password"
-        required
-      />
-    </div>
-    <div>
-      <button class="button new-primary" type="submit" @click="getInfo()">
-        Login
-      </button>
-    </div>
+    <form class="box" @submit.prevent="signIn(username, password)">
+      <div class="field">
+        <label class="label is-medium">Username</label>
+        <input
+          class="input is-medium is-dark"
+          type="text"
+          placeholder="Username"
+          v-model="username"
+          required
+        />
+      </div>
+      <div>
+        <label class="label is-medium" for="password">Password</label>
+        <input
+          class="input is-medium is-dark"
+          type="password"
+          placeholder="Password"
+          v-model="password"
+          required
+        />
+      </div>
+      <div>
+        <button class="button new-primary">
+          Login
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 

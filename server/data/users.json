@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "ADMIN",
+      "username": "admin",
+      "email": "admin@example.com",
+      "password": "admin",
+      "isAdmin": true,
+      "pfp": "https://source.unsplash.com/random/200x200?sig=1"
+    },
+    {
+      "id": 2,
+      "name": "Tyler Wendover",
+      "username": "tyler",
+      "email": "tyler@example.com",
+      "password": "password",
+      "isAdmin": false
+    },
+    {
+      "id": 3,
+      "name": "John Doe",
+      "username": "john",
+      "email": "john@example.com",
+      "password": "password",
+      "isAdmin": false
+    }
+  ]
+}

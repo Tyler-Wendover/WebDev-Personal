@@ -1,0 +1,11 @@
+
+http://127.0.0.1:3003/api/v1/posts/
+
+###
+POST http://127.0.0.1:3003/api/v1/posts/seed
+
+###
+POST http://127.0.0.1:3003/api/v1/users/seed
+
+###
+http://127.0.0.1:3003/api/v1/users/

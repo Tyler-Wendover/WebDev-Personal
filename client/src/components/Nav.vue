@@ -40,11 +40,6 @@ let isActive = ref(false);
             Friend Activity
           </router-link>
 
-
-          <router-link class="navbar-item" to="/users" @click="isSignedIn()">
-            Users
-          </router-link>
-
         </div>
 
         <div class="navbar-end">

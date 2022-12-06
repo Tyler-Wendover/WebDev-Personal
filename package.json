@@ -1,0 +1,32 @@
+{
+    "name": "webdev-class",
+    "version": "1.0.0",
+    "description": "",
+    "author": "",
+    "license": "ISC",
+  
+    "scripts": {
+      "build": "npm i -ws && npm run build -ws",
+      "dev": "nodemon --watch server server/server.js",
+      "start": "node server/server.js"
+    },
+    "workspaces": [
+      "client"
+    ],
+    "dependencies": {
+      "mongodb": "^4.12.1",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.1"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.20"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Tyler-Wendover/WebDev-Class.git"
+    },
+    "bugs": {
+      "url": "https://github.com/Tyler-Wendover/WebDev-Class/issues"
+    },
+    "homepage": "https://github.com/Tyler-Wendover/WebDev-Class#readme"
+  }
