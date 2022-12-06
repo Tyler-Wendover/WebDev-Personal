@@ -36,8 +36,7 @@ async function signIn( username: string, password: string ) {
       <button class="delete"></button>
       <h1>Sign In using:</h1>
       <h2>Username: admin , Password: admin</h2>
-      <h2>Username: tyler , Password: password</h2>
-      <h2>Username: john , Password: password</h2>
+      <h2>for admin privilages</h2>
     </div>
     <form class="box" @submit.prevent="signIn(username, password)">
       <div class="field">
