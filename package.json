@@ -6,10 +6,9 @@
     "license": "ISC",
   
     "scripts": {
-      "build": "npm i -ws && npm run build -ws && npm run test",
+      "build": "npm i -workspaces && npm run build -workspaces",
       "dev": "nodemon --watch server server/index.js",
-      "start": "node server/index.js",
-      "test" : "echo 'it did the thing'"
+      "start": "node server/index.js"
     },
     "workspaces": [
       "client"
