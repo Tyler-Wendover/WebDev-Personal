@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const postsController = require("./controllers/posts");
 const usersController = require("./controllers/users");
+const gptController = require("./controllers/gpt");
 
 const hostname = "127.0.0.1";
 const port = process.env.PORT || 3000;
@@ -27,7 +28,8 @@ app
     sss.PORT();
   })
   .use("/api/v1/posts", postsController)
-  .use("/api/v1/users", usersController);
+  .use("/api/v1/users", usersController)
+  .use("/api/v1/gpt", gptController);
 
 app.get("*", (req, res) => {
   res.sendFile("index.html", { root: "./client/dist" });

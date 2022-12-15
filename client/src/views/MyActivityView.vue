@@ -3,6 +3,8 @@ import { reactive, ref } from "vue";
 import { getPosts, createPost, deletePost, type Post } from "../stores/userPosts";
 import session, { who } from "../stores/session";
 import { useRoute, useRouter } from "vue-router";
+import { createDescription } from "@/features/gpt";
+import { createPostContent } from "@/stores/aigen";
 
 const posts = reactive([] as Post[]);
 getPosts().then(x=>posts.push(...x.posts));
@@ -29,6 +31,12 @@ async function deleteConfirmation(post: Post) {
     posts.splice(posts.indexOf(post), 1);
   }
 }
+
+async function getGptDescription() {
+        const description = await createPostContent(post.value.title);
+        post.value.content = description;
+        return description;
+    }
 </script>
 
 <template>
@@ -77,6 +85,7 @@ async function deleteConfirmation(post: Post) {
                     id="content"
                     v-model="post.content"
                   />
+                  <button class="button is-warning is-small" @click.prevent="getGptDescription" >Generate</button>
                 </div>
                 <div class="field">
                   <label class="label">Date</label>

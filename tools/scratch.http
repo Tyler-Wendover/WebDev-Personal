@@ -9,3 +9,6 @@ POST http://127.0.0.1:3003/api/v1/users/seed
 
 ###
 http://127.0.0.1:3003/api/v1/users/
+
+###
+http://127.0.0.1:3003/api/v1/gpt/went%20to%20the%20gym
